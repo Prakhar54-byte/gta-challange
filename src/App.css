@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Courier+Prime:wght@400;700&display=swap');
+
+:root {
+  --cork: #6b4a34;
+  --cork-dark: #4d3323;
+  --paper: #ebdfc2;
+  --paper-dark: #d8c8a0;
+  --ink: #1d1a15;
+  --pink: #ff3d81;
+  --teal: #00c2a8;
+  --stamp-red: #b0212f;
+
+  --font-display: 'Anton', 'Arial Narrow', sans-serif;
+  --font-mono: 'Courier Prime', 'Courier New', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(0, 0, 0, 0.12), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(0, 0, 0, 0.15), transparent 45%),
+    var(--cork);
+  background-blend-mode: multiply;
+  color: var(--ink);
+  font-family: var(--font-mono);
+}
+
+.board {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+/* ---------- Masthead ---------- */
+
+.masthead {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.masthead__eyebrow {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--paper);
+  font-size: 13px;
+  margin: 0 0 12px;
+}
+
+.masthead__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  letter-spacing: 0.02em;
+  color: var(--paper);
+  margin: 0 0 14px;
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.35);
+}
+
+.masthead__sub {
+  color: var(--paper-dark);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+/* ---------- Stepper ---------- */
+
+.stepper {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+  flex-wrap: wrap;
+}
+
+.stepper__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--paper-dark);
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.stepper__item--active {
+  color: var(--paper);
+  opacity: 1;
+}
+
+.stepper__index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  font-size: 12px;
+}
+
+/* ---------- Panels ---------- */
+
+.panel {
+  border-radius: 4px;
+  padding: 32px;
+  margin-bottom: 28px;
+}
+
+.panel h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  font-size: 1.8rem;
+  margin: 0 0 10px;
+}
+
+.panel__hint {
+  line-height: 1.6;
+  color: rgba(29, 26, 21, 0.75);
+  max-width: 520px;
+  margin: 0 0 20px;
+}
+
+.panel--paper,
+.panel--editor,
+.panel--result {
+  background: var(--paper);
+  box-shadow: 0 12px 0 rgba(0, 0, 0, 0.18);
+  border: 2px solid var(--ink);
+}
+
+.panel--cork {
+  background: transparent;
+  color: var(--paper);
+}
+
+.panel--cork h2 {
+  color: var(--paper);
+}
+
+.panel--cork .panel__hint {
+  color: var(--paper-dark);
+}
+
+.panel__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Upload step ---------- */
+
+.dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 140px;
+  border: 3px dashed var(--ink);
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 14px;
+  transition: background-color 0.15s ease;
+}
+
+.dropzone:hover {
+  background: rgba(255, 61, 129, 0.08);
+}
+
+.dropzone__label {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--ink);
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+.error-text {
+  color: var(--stamp-red);
+  font-weight: 700;
+  margin-top: 12px;
+}
+
+/* ---------- Customize step ---------- */
+
+.name-input {
+  border: 2px solid var(--ink);
+  background: var(--paper-dark);
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  min-width: 260px;
+  color: var(--ink);
+}
+
+.editor-shell {
+  border: 2px solid var(--ink);
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+/* ---------- Result step ---------- */
+
+.result-frame {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.result-frame img {
+  max-width: 100%;
+  max-height: 640px;
+  border: 6px solid var(--ink);
+  box-shadow: 0 10px 0 rgba(0, 0, 0, 0.15);
+}
+
+.result-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  padding: 12px 28px;
+  border: 2px solid var(--ink);
+  background: var(--paper-dark);
+  color: var(--ink);
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.btn:hover {
+  background: var(--paper);
+}
+
+.btn--primary {
+  background: var(--pink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.btn--primary:hover {
+  background: #e6316f;
+}
+
+/* ---------- Gallery / precinct board ---------- */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 22px;
+}
+
+.gallery__card {
+  position: relative;
+  margin: 0;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  padding: 8px 8px 10px;
+  text-align: center;
+}
+
+.gallery__pin {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--teal);
+  border: 2px solid var(--ink);
+}
+
+.gallery__card img {
+  width: 100%;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.gallery__card figcaption {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gallery__remove {
+  margin-top: 6px;
+  background: none;
+  border: none;
+  color: var(--stamp-red);
+  font-size: 11px;
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: var(--font-mono);
+}
+
+/* ---------- Footer ---------- */
+
+.foot-note {
+  text-align: center;
+  color: var(--paper-dark);
+  font-size: 12px;
+  margin-top: 20px;
+}
+
+@media (max-width: 640px) {
+  .panel {
+    padding: 22px;
+  }
+
+  .name-input {
+    width: 100%;
+    min-width: 0;
+  }
+}
